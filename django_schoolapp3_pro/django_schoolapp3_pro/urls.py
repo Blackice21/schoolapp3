@@ -21,6 +21,4 @@ from school import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home')
-] 
-if settings.DEBUG == False:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
