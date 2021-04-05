@@ -38,3 +38,7 @@ def delete_school(request, pk):
         school.delete()
         return redirect('home')
 
+def detail_school(request,pk):
+     school = get_object_or_404(School, pk=pk)   
+     return render(request, 'detail.html', {'school': school})
+  

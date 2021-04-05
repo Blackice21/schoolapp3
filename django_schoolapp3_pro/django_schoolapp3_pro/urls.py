@@ -23,6 +23,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('create_school/', views.create, name='create_school'),
     path('update_school/<int:pk>/', views.update_school, name='update_school'),
-    path('delete_school/<int:pk>/', views.delete_school, name='delete_school')
+    path('delete_school/<int:pk>/', views.delete_school, name='delete_school'),
+    path('detail_school/<int:pk>/', views.detail_school, name='detail_school')
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
