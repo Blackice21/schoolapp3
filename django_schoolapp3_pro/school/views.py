@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import School
 from .forms import SchoolForm
 # Create your views here.
@@ -16,5 +16,16 @@ def create(request):
         schoolform = SchoolForm(request.POST, request.FILES)
         schoolform.save()
         return redirect('home')
-    # if get return create.html page
-    # else create a school from the user posted info
+
+def update_school(request, pk):
+    # check if request is get or post
+    school = get_object_or_404(School, pk=pk)
+    if request.method == 'GET':
+        schoolform = SchoolForm(instance=school)
+        return render(request, 'update.html', {'schoolform': schoolform, 'school':school})
+    else:
+        schoolform = SchoolForm(request.POST, request.FILES, instance=school)
+        schoolform.save()
+        return redirect('home')
+    # if get then return update.html page
+    # else update specific school, redirect to home
