@@ -1,0 +1,5 @@
+<h1>Are you sure you want to delete: {{school.name}}</h1>
+<form action="{% url 'delete_school' pk=school.pk %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+</form>

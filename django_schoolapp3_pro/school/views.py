@@ -29,3 +29,12 @@ def update_school(request, pk):
         return redirect('home')
     # if get then return update.html page
     # else update specific school, redirect to home
+
+def delete_school(request, pk):
+    school = get_object_or_404(School, pk=pk)
+    if request.method == 'GET':
+        return render(request, 'delete.html', {'school':school})
+    else:
+        school.delete()
+        return redirect('home')
+
