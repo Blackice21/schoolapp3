@@ -20,5 +20,6 @@ from django.conf import settings
 from school import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home')
+    path('', views.home, name='home'),
+    path('create_school/', views.create, name='create_school')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
